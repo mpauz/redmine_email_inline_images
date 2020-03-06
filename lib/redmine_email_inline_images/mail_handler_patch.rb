@@ -4,7 +4,8 @@ module RedmineEmailInlineImages
       base.send(:include, InstanceMethods)
       
       base.class_eval do
-        alias_method_chain :plain_text_body, :email_inline_images
+        alias_method :plain_text_body_without_email_inline_images, :plain_text_body
+        alias_method :plain_text_body, :plain_text_body_with_email_inline_images
       end
     end
     
